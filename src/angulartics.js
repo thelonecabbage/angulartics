@@ -8,7 +8,7 @@
 
 var angulartics = window.angulartics || (window.angulartics = {});
 angulartics.waitForVendorApi = function (objectName, delay, registerFn) {
-  if (!window.hasOwnProperty(objectName)) {
+  if (!Object.prototype.hasOwnProperty.call(window, objectName)) {
     setTimeout(function () { angulartics.waitForVendorApi(objectName, delay, registerFn); }, delay);
   }
   else {
@@ -26,6 +26,7 @@ angular.module('angulartics', [])
     pageTracking: { 
       autoTrackFirstPage: true,
       autoTrackVirtualPages: true,
+      basePath: '',
       bufferFlushDelay: 1000 
     },
     eventTracking: {
@@ -97,6 +98,7 @@ angular.module('angulartics', [])
     settings: settings,
     virtualPageviews: function (value) { this.settings.pageTracking.autoTrackVirtualPages = value; },
     firstPageview: function (value) { this.settings.pageTracking.autoTrackFirstPage = value; },
+    withBase: function (value) { this.settings.pageTracking.basePath = (value) ? angular.element('base').attr('href').slice(0, -1) : ''; },
     registerPageTrack: registerPageTrack,
     registerEventTrack: registerEventTrack
   };
@@ -109,7 +111,8 @@ angular.module('angulartics', [])
   if ($analytics.settings.pageTracking.autoTrackVirtualPages) {
     $rootScope.$on('$routeChangeSuccess', function (event, current) {
       if (current && (current.$$route||current).redirectTo) return;
-      $analytics.pageTrack($location.url());
+      var url = $analytics.settings.pageTracking.basePath + $location.url();
+      $analytics.pageTrack(url);
     });
   }
 }])
