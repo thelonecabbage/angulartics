@@ -32,12 +32,12 @@
   "dependencies": {
   },
   "devDependencies": {
-    "grunt": "latest",
-    "grunt-karma": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-concat": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-clean": "latest",
-    "phantomjs": "latest"
+    "grunt": "~0.4.1",
+    "grunt-karma": "~0.6.2",
+    "grunt-contrib-jshint": "~0.7.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-clean": "~0.5.0",
+    "phantomjs": "~1.9.2-2"
   }
 }
