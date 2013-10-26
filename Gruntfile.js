@@ -58,5 +58,5 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-clean');
 
    grunt.registerTask('test', ['jshint', 'karma']);
-   grunt.registerTask('default', ['jshint', 'karma', 'uglify:predist', 'concat:dist', 'uglify:dist']);
+   grunt.registerTask('default', ['test', 'uglify:predist', 'concat:dist', 'uglify:dist']);
 };
