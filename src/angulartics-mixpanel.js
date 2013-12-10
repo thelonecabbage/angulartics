@@ -4,6 +4,9 @@
  * Contributed by http://github.com/L42y
  * License: MIT
  */
+
+/*globals mixpanel, angular */
+
 (function (angular) {
   'use strict';
 
